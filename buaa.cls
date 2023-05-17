@@ -1,15 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% %% <UTF-8>
-%% %% 北航研究生毕业论文模板 - LaTeX 01-24-2022
-%% %% 论文样式参考自《研究生手册--二〇二〇年七月》
-%% %% 基于ctexbook
+%% %% 中法工程师学院毕业实习模板 - LaTeX  2023-5-16
+%% %% 论文样式参考自学院颁发模板
+%% %% 基于北航研究生毕业论文模板
 %% %%
-%% %% 初始版本作者:
+%% %% 初始北航研究生毕业论文模板作者:
 %% %%   Wei Quanmao (weiqm@buaa.edu.cn)
-%% %% 参与修改:
 %% %%   Qiao Junfeng (qiaojunfeng@outlook.com)
-%% %%
+%% %% 中法工程师学院毕业实习修改作者：
+%% %%   Luo Chensheng (@lcs27)
 %% %% Versions:
+%% %%   v4.0  LuoCS (16-05-2023)
 %% %%   v3.1  WeiQM (01-24-2022)
 %% %%   v3.0  WeiQM (03-07-2020)
 %% %%   v2.2  WeiQM (11-30-2019)
@@ -25,40 +26,10 @@
 
 %% 模板标识
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{buaa}[2022/01/24 v3.1 BUAA thesis class]
+\ProvidesClass{buaa}[2023/05/26 v3.1 BUAA thesis class]
 \typeout{This is LaTeX template buaa. Version 3.1 (based on CTeX) 01-24-2022}
 
 %% 选项
-%% 论文类型
-\DeclareOption{master}{\gdef\@thesis{master}}             % 学术硕士论文
-\DeclareOption{professional}{\gdef\@thesis{professional}} % 专业硕士论文
-\DeclareOption{doctor}{\gdef\@thesis{doctor}}             % 博士论文
-\DeclareOption{prodoctor}{\gdef\@thesis{prodoctor}}       % 专业博士论文
-\DeclareOption{thesis}{\ClassWarning{buaa}{%
-  You have not specified the THESIS option. The word thesis should be replaced by one of the following thesis type: master(default), professional, doctor, prodoctor.
-}}
-
-%% 密级
-\DeclareOption{public}{\gdef\@permission{public}}             % 公开
-\DeclareOption{privacy}{\gdef\@permission{privacy}}           % 内部
-\DeclareOption{secret}{\gdef\@permission{secret3}}            % 秘密 = 秘密3年
-\DeclareOption{secret3}{\gdef\@permission{secret3}}           % 秘密3年
-\DeclareOption{secret5}{\gdef\@permission{secret5}}           % 秘密5年
-\DeclareOption{secret10}{\gdef\@permission{secret10}}         % 秘密10年
-\DeclareOption{secret*}{\gdef\@permission{secret*}}           % 秘密永久
-\DeclareOption{classified}{\gdef\@permission{classified5}}    % 机密 = 机密5年
-\DeclareOption{classified3}{\gdef\@permission{classified3}}   % 机密3年
-\DeclareOption{classified5}{\gdef\@permission{classified5}}   % 机密5年
-\DeclareOption{classified10}{\gdef\@permission{classified10}} % 机密10年
-\DeclareOption{classified*}{\gdef\@permission{classified*}}   % 机密永久
-\DeclareOption{topsecret}{\gdef\@permission{topsecret10}}     % 绝密 = 绝密10年
-\DeclareOption{topsecret3}{\gdef\@permission{topsecret3}}     % 绝密3年
-\DeclareOption{topsecret5}{\gdef\@permission{topsecret5}}     % 绝密5年
-\DeclareOption{topsecret10}{\gdef\@permission{topsecret10}}   % 绝密10年
-\DeclareOption{topsecret*}{\gdef\@permission{topsecret*}}     % 绝密永久
-\DeclareOption{permission}{\ClassWarning{buaa}{%
-  You have not specified the PERMISSION option. The word permission should be replaced by one of the following thesis type: public, privacy, secret, classified, topsecret.
-}}
 
 %% 打印设置
 \DeclareOption{oneside}{\gdef\@printtype{oneside}} % 单面打印
@@ -80,23 +51,6 @@
 \DeclareOption{Professional}{\gdef\@thesis{professional}}
 \DeclareOption{Doctor}{\gdef\@thesis{doctor}}
 \DeclareOption{ProDoctor}{\gdef\@thesis{prodoctor}}
-\DeclareOption{Public}{\gdef\@permission{public}}
-\DeclareOption{Privacy}{\gdef\@permission{privacy}}
-\DeclareOption{Secret}{\gdef\@permission{secret3}}
-\DeclareOption{Secret3}{\gdef\@permission{secret3}}
-\DeclareOption{Secret5}{\gdef\@permission{secret5}}
-\DeclareOption{Secret10}{\gdef\@permission{secret10}}
-\DeclareOption{Secret*}{\gdef\@permission{secret*}}
-\DeclareOption{Classified}{\gdef\@permission{classified5}}
-\DeclareOption{Classified3}{\gdef\@permission{classified3}}
-\DeclareOption{Classified5}{\gdef\@permission{classified5}}
-\DeclareOption{Classified10}{\gdef\@permission{classified10}}
-\DeclareOption{Classified*}{\gdef\@permission{classified*}}
-\DeclareOption{TopSecret}{\gdef\@permission{topsecret10}}
-\DeclareOption{TopSecret3}{\gdef\@permission{topsecret3}}
-\DeclareOption{TopSecret5}{\gdef\@permission{topsecret5}}
-\DeclareOption{TopSecret10}{\gdef\@permission{topsecret10}}
-\DeclareOption{TopSecret*}{\gdef\@permission{topsecret*}}
 \DeclareOption{Oneside}{\gdef\@printtype{oneside}}
 \DeclareOption{Twoside}{\gdef\@printtype{twoside}}
 \DeclareOption{Win}{\gdef\@ostype{win}}
@@ -282,11 +236,9 @@
 
 \newcommand{\Title}[2]{\gdef\@titlecn{#1} \gdef\@titleen{#2}}
 \newcommand{\Subtitle}[2]{\gdef\@subtitlecn{#1} \gdef\@subtitleen{#2}}
-\newcommand{\Department}[1]{\gdef\@department{#1}}
-\def\@branch{工学} % 学科大类
-\newcommand{\Branch}[1]{\gdef\@branch{#1}}
 \newcommand{\Major}[1]{\gdef\@major{#1}}
-\newcommand{\Feild}[1]{\gdef\@feild{#1}}
+\newcommand{\Field}[1]{\gdef\@field{#1}}
+\newcommand{\Post}[1]{\gdef\@post{#1}}
 \newcommand{\Tutor}[3]{\gdef\@tutorcn{#1} \gdef\@tutoren{#2} \gdef\@tutordegree{#3}}
 \newcommand{\Cotutor}[3]{%
   \gdef\@cotutorcn{#1}
@@ -295,15 +247,14 @@
 \newcommand{\Author}[2]{\gdef\@authorcn{#1} \gdef\@authoren{#2}}
 \newcommand{\StudentID}[1]{\gdef\@studentid{#1}}
 
-\newcommand{\CLC}[1]{\gdef\@clc{#1}}
-\newcommand{\DateEnroll}[3]{%
-  \gdef\@dateenrollm{#1}
-  \gdef\@dateenrolld{#2}
-  \gdef\@dateenrolly{#3}}
-\newcommand{\DateGraduate}[3]{%
-  \gdef\@dategraduatem{#1}
-  \gdef\@dategraduated{#2}
-  \gdef\@dategraduatey{#3}}
+\newcommand{\DateBeginIntern}[3]{%
+  \gdef\@datebegininternm{#1}
+  \gdef\@datebegininternd{#2}
+  \gdef\@datebegininterny{#3}}
+\newcommand{\DateEndIntern}[3]{%
+  \gdef\@dateendinternm{#1}
+  \gdef\@dateendinternd{#2}
+  \gdef\@dateendinterny{#3}}
 \newcommand{\DateSubmit}[3]{%
   \gdef\@datesubmitm{#1}
   \gdef\@datesubmitd{#2}
@@ -460,22 +411,20 @@
 \newcommand{\checkinput}{%检测输入元素
   \ifthenelse{\isundefined{\@titlecn}}{\errmessage{%
     Please set title by 'Title'.}}{}
-  \ifthenelse{\isundefined{\@department}}{\errmessage{%
-    Please set department by 'Department'.}}{}
   \ifthenelse{\isundefined{\@major}}{\errmessage{%
     Please set major by 'Major'.}}{}
-  \ifthenelse{\isundefined{\@feild}}{\errmessage{%
-    Please set feild by 'Feild'.}}{}
+  \ifthenelse{\isundefined{\@field}}{\errmessage{%
+    Please set field by 'Field'.}}{}
   \ifthenelse{\isundefined{\@tutorcn}}{\errmessage{%
     Please set tutor name by 'Tutor'.}}{}
   \ifthenelse{\isundefined{\@authorcn}}{\errmessage{%
     Please set author name by 'Author'.}}{}
   \ifthenelse{\isundefined{\@studentid}}{\errmessage{%
     Please set student ID date by 'StudentID'.}}{}
-  \ifthenelse{\isundefined{\@dateenrolly}}{\errmessage{%
-    Please set enroll date by 'DateEnroll'.}}{}
-  \ifthenelse{\isundefined{\@dategraduatey}}{\errmessage{%
-    Please set graduate date by 'DateGraduate'.}}{}
+  \ifthenelse{\isundefined{\@datebegininterny}}{\errmessage{%
+    Please set beginintern date by 'Datebeginintern'.}}{}
+  \ifthenelse{\isundefined{\@dateendinterny}}{\errmessage{%
+    Please set endintern date by 'Dateendintern'.}}{}
   \ifthenelse{\isundefined{\@datesubmity}}{\errmessage{%
     Please set submite date by 'DateSubmit'.}}{}
   \ifthenelse{\isundefined{\@datedefencey}}{\errmessage{%
@@ -493,23 +442,6 @@
     \errmessage{Please use 'on' or 'bi' or 'off' for listfigtab.}}
   }
 }
-\newcommand{\clearautopage}{%右侧起新页
-  \clearpage
-  \ifthenelse{\equal{\@printtype}{twoside}}{% 双面
-    \ifodd\c@page
-    \else
-      \hbox{}
-      \vspace*{\fill}
-      \begin{center}
-        {\textcolor[rgb]{0.75,0.75,0.75}{\@emptypagewords}}
-      \end{center}
-      \vspace{\fill}
-      \thispagestyle{empty}
-      \newpage
-      \if@twocolumn \hbox{} \newpage \fi
-    \fi
-  }{}
-}
 \newcommand{\sethyper}{%设置链接引用颜色
   \hypersetup{%
     pdftitle={\@titlecn},
@@ -526,76 +458,17 @@
     }
   }
 }
-\newcommand{\TranSecretLevel}[1]{%密级翻译
-  \ifthenelse{\equal{\@permission}{public}}{\relax}{%
-  \ifthenelse{\equal{\@permission}{privacy}}{内~~部}{%
-  \ifthenelse{\equal{\@permission}{secret3}}{秘密~\ding{73}~{\bfseries 3}年}{%
-  \ifthenelse{\equal{\@permission}{secret5}}{秘密~\ding{73}~{\bfseries 5}年}{%
-  \ifthenelse{\equal{\@permission}{secret10}}{秘密~\ding{73}~{\bfseries 10}年}{%
-  \ifthenelse{\equal{\@permission}{secret*}}{秘密~\ding{73}~永久}{%
-  \ifthenelse{\equal{\@permission}{classified3}}{机密~\ding{73}~{\bfseries 3}年}{%
-  \ifthenelse{\equal{\@permission}{classified5}}{机密~\ding{73}~{\bfseries 5}年}{%
-  \ifthenelse{\equal{\@permission}{classified10}}{机密~\ding{73}~{\bfseries 10}年}{%
-  \ifthenelse{\equal{\@permission}{classified*}}{机密~\ding{73}~永久}{%
-  \ifthenelse{\equal{\@permission}{topsecret3}}{绝密~\ding{73}~{\bfseries 3}年}{%
-  \ifthenelse{\equal{\@permission}{topsecret5}}{绝密~\ding{73}~{\bfseries 5}年}{%
-  \ifthenelse{\equal{\@permission}{topsecret10}}{绝密~\ding{73}~{\bfseries 10}年}{%
-  \ifthenelse{\equal{\@permission}{topsecret*}}{绝密~\ding{73}~永久}{%
-  \ifthenelse{\equal{\@permission}{permission*}}{密级~\ding{73}~保密期限}{%
-  }}}}}}}}}}}}}}}
-}
+
 \newcommand{\TranDegree}[1]{%职称翻译
   \frenchspacing
   \ifthenelse{\equal{#1}{教授}}{Prof.}{%
   \ifthenelse{\equal{#1}{副教授}}{Prof.}{%
   \ifthenelse{\equal{#1}{讲师}}{Teacher}{%
   \ifthenelse{\equal{#1}{高工}}{Engineer}{%
+  \ifthenelse{\equal{#1}{工程师}}{Engineer}{%
   \ifthenelse{\equal{#1}{研究员}}{Researcher}{%
   \ifthenelse{\equal{#1}{副研究员}}{Researcher}{%
-  }}}}}}
-}
-\newcommand{\TranDepartment}[1]{%院系翻译
-  \ifthenelse{\equal{#1}{材料科学与工程学院}}{School of Materials Science and Engineering}{%
-  \ifthenelse{\equal{#1}{电子信息工程学院}}{School of Electronic and Information Engineering}{%
-  \ifthenelse{\equal{#1}{自动化科学与电气工程学院}}{School of Automation Science and Electronic Engineering}{%
-  \ifthenelse{\equal{#1}{能源与动力工程学院}}{School of Energy and Power Engineering}{%
-  \ifthenelse{\equal{#1}{航空科学与工程学院}}{School of Aeronautic Science and Engineering}{%
-  \ifthenelse{\equal{#1}{计算机学院}}{School of Computer Science and Engineering}{%
-  \ifthenelse{\equal{#1}{机械工程及自动化学院}}{School of Mechanical Engineering and Automation}{%
-  \ifthenelse{\equal{#1}{经济管理学院}}{School of Economics and Management}{%
-  \ifthenelse{\equal{#1}{数学与系统科学学院}}{School of Mathematics and Systems Science}{%
-  \ifthenelse{\equal{#1}{生物与医学工程学院}}{School of Biological Science and Medical Engineering}{%
-  \ifthenelse{\equal{#1}{人文社会科学学院}}{School of Humanities and Social Sciences}{%
-  \ifthenelse{\equal{#1}{公共管理学院}}{School of Humanities and Social Sciences}{%
-  \ifthenelse{\equal{#1}{人文社会科学学院（公共管理学院）}}{School of Humanities and Social Sciences}{%
-  \ifthenelse{\equal{#1}{人文社会科学学院(公共管理学院)}}{School of Humanities and Social Sciences}{%
-  \ifthenelse{\equal{#1}{外国语学院}}{School of Foreign Languages}{%
-  \ifthenelse{\equal{#1}{交通科学与工程学院}}{School of Transportation Science and Engineering}{%
-  \ifthenelse{\equal{#1}{可靠性与系统工程学院}}{School of Reliability and Systems Engineering}{%
-  \ifthenelse{\equal{#1}{宇航学院}}{School of Astronautics}{%
-  \ifthenelse{\equal{#1}{飞行学院}}{Flight College}{%
-  \ifthenelse{\equal{#1}{仪器科学与光电工程学院}}{School of Instrumentation Science and Opto-electronics Engineering}{%
-  \ifthenelse{\equal{#1}{北京学院}}{School of Beijing}{%
-  \ifthenelse{\equal{#1}{物理科学与核能工程学院}}{School of Physics and Nuclear Energy Engineering}{%
-  \ifthenelse{\equal{#1}{法学院}}{School of Law}{%
-  \ifthenelse{\equal{#1}{软件学院}}{School of Software}{%
-  \ifthenelse{\equal{#1}{继续教育学院}}{College of Continuing Education}{%
-  \ifthenelse{\equal{#1}{高等理工学院}}{School of Advance Engineering}{%
-  \ifthenelse{\equal{#1}{中法工程师学院}}{Sino-French Engineer School}{%
-  \ifthenelse{\equal{#1}{国际学院}}{Beihang School}{%
-  \ifthenelse{\equal{#1}{新媒体艺术与设计学院}}{School of New Media Art and Design}{%
-  \ifthenelse{\equal{#1}{化学学院}}{School of Chemistry}{%
-  \ifthenelse{\equal{#1}{马克思主义学院}}{School of Marxism}{%
-  \ifthenelse{\equal{#1}{无人系统研究院}}{Unmanned System Institute}{%
-  \ifthenelse{\equal{#1}{人文与社会科学高等研究院}}{Institue for Advanced Studies in Humanities and Social Science}{%
-  \ifthenelse{\equal{#1}{空间与环境学院}}{School of Space and Environment}{%
-  \ifthenelse{\equal{#1}{国际通用工程学院}}{School of General Engineering}{%
-  \ifthenelse{\equal{#1}{国际交叉科学研究院}}{International Research Institue for Multidisciplinary Science}{%
-  \ifthenelse{\equal{#1}{医工交叉创新研究院}}{Interdisciplinary Innovation Institute for Medicine and Engineering}{%
-  \ifthenelse{\equal{#1}{北斗丝路学院}}{School of BeiDou and the Silk Road}{%
-  \ifthenelse{\equal{#1}{网络空间安全学院}}{School of Cyber Science and Technology}{%
-  \ifthenelse{\equal{#1}{人工智能研究院}}{Institue of Artificial Intelligence}{%
-  }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+  }}}}}}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -617,32 +490,43 @@
     chapter={%章标题 : 三号黑体居中 单倍行距 段前/段后0.5行 另起新页
         format=\zihao{3} \heiti \centering \thispagestyle{fancy},
         fixskip=true,
-        beforeskip=19.27pt,
-        afterskip=22.48pt,
-        break=\clearautopage,
+        beforeskip=8pt,
+        afterskip=8pt,
+        name = {Chapter,},
+        number = \ttfamily\arabic{chapter},
     },
     section={%节标题 : 四号黑体居左 单倍行距 段前/段后0.5行
         format=\zihao{4} \heiti \raggedright,
-        beforeskip=8.43pt,
-        afterskip=11.24pt,
+        beforeskip=7pt,
+        afterskip=7pt,
+        name = {,.},
+        number = \ttfamily\arabic{section},
     },
     subsection={%条标题 : 小四号黑体居左 单倍行距 段前/段后0.5行
         format=\zihao{-4} \heiti \raggedright,
         beforeskip=3.61pt,
         afterskip=3.61pt,
+        name = {,.},
+        number = \ttfamily\arabic{subsection},
     },
     subsubsection={% 附加4级标题 : 小四号宋体加粗居左
         format=\zihao{-4} \songti \raggedright \bfseries,
         nameformat=\mdseries,
         beforeskip = 0bp, afterskip = 0bp,
+        name = {,.},
+        number = \ttfamily\arabic{subsubsection},
     },
     paragraph={% 附加5级标题 : 小四号宋体居左
         format=\zihao{-4} \songti \raggedright,
         beforeskip = 0bp, afterskip = 0bp,
+        name = {,.},
+        number = \ttfamily\arabic{paragraph},
     },
     subparagraph={% 附加6级标题 : 小四号宋体居左
         format=\zihao{-4} \songti \raggedright,
         beforeskip = 0bp, afterskip = 0bp,
+        name = {,.},
+        number = \ttfamily\arabic{subparagraph},
     }
 }
 
@@ -663,15 +547,10 @@
   \setcounter{page}{1}
   \abstructkeyword
   \makecontextlist
-  \denotation
 
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyfoot[C]{\zihao{5} \thepage}
-  \fancyhead[CE]{\zihao{-5} \leftmark}
-  \ifthenelse{\equal{\@thesis}{master} \OR \equal{\@thesis}{professional}}{%
-      \fancyhead[CO]{\zihao{-5} 北京航空航天大学硕士学位论文}}{}
-  \ifthenelse{\equal{\@thesis}{doctor} \OR \equal{\@thesis}{prodoctor}}{%
-      \fancyhead[CO]{\zihao{-5} 北京航空航天大学博士学位论文}}{}
+  \fancyhead[C]{\zihao{-5} 北京航空航天大学中法工程师学院毕业大实习论文}
   \setcounter{page}{1}
 }
 
@@ -681,32 +560,21 @@
 {\pdfbookmark[0]{中文封面}{makecovercn}
 
   {\zihao{5} \heiti \noindent
-    \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}%
+    \makebox[5\ccwd][s]{中图分类号}：{\bfseries TP242}%
     \\
     \makebox[5\ccwd][s]{论文编号}：{\bfseries 10006\@studentid}%
-    \\
-    \TranSecretLevel{\@permission}
   }
 
-  \vspace{60pt}
-
-  \begin{figure}[h]
+  \vspace{5pt}
+  \centering
+  \begin{figure}[!h]
     \centering
-    \includegraphics{pic/logo-buaa}
-  \end{figure}
-  \vspace{-10pt}
-  \begin{figure}[h]
-    \centering
-    \ifthenelse{\equal{\@thesis}{master}}{\includegraphics[width=0.9\linewidth]{pic/head-master}}{%
-    \ifthenelse{\equal{\@thesis}{professional}}{\includegraphics[width=0.9\linewidth]{pic/head-professional}}{%
-    \ifthenelse{\equal{\@thesis}{doctor}}{\includegraphics[width=0.9\linewidth]{pic/head-doctor}}{%
-    \ifthenelse{\equal{\@thesis}{prodoctor}}{\includegraphics[width=0.9\linewidth]{pic/head-prodoctor}}{%
-    }}}}
+    \includegraphics[width=.75\linewidth]{pic/head-intern}
   \end{figure}
 
   \centering
 
-  \vspace{20pt}
+  \vspace{5pt}
   \begin{spacing}{1.2}
     \ifthenelse{\isundefined{\@subtitlecn}}{\vspace{20pt}}{}
     \zihao{-0} \songti \bfseries \@titlecn
@@ -716,21 +584,20 @@
    }
   \end{spacing}
 
-  \vspace{100pt}
+  \vspace{50pt}
   \begin{spacing}{1.8}
     \ziju{0.2} \zihao{-3} \heiti
     \begin{tabular}{cll}
       作者姓名  & \@authorcn \\
-      学科专业  & \multicolumn{2}{l}{\@major} \\
-      指导教师  & \@tutorcn   & \@tutordegree \\
+      实习领域  & \multicolumn{2}{l}{\@field} \\
+      实习岗位  & \multicolumn{2}{l}{\@post} \\
+      企业导师  & \@tutorcn   & \@tutordegree \\
       \ifthenelse{\isundefined{\@cotutorcn}}{}{%
                 & \@cotutorcn & \@cotutordegree\\
       }
-      培养学院  & \multicolumn{2}{l}{\@department}
+      培养学院  & 中法工程师学院
     \end{tabular}
   \end{spacing}
-
-  \clearautopage
 }}
 \newcommand{\makecoveren}{% 英文封面
 {\pdfbookmark[0]{英文封面}{makecoveren}
@@ -752,27 +619,22 @@
 
     \vspace{50pt}
 
-    {\zihao{4}
-      A Dissertation Submitted for the Degree of
-      \ifthenelse{\equal{\@thesis}{master}}{Master}{%
-      \ifthenelse{\equal{\@thesis}{professional}}{Master}{%
-      \ifthenelse{\equal{\@thesis}{doctor}}{Doctor of Philosophy}{%
-      \ifthenelse{\equal{\@thesis}{prodoctor}}{Doctor of Engineering}{%
-    }}}}
+    {\zihao{-2}
+      A Dissertation Submitted for the Degree of Engineer
     }
 
     \vspace{100pt}
-    {\zihao{-3} \bfseries
+    {\zihao{-2} \bfseries
       \begin{tabular}{ll}
         \ifthenelse{\isundefined{\@cotutorcn}}{%
-          \makebox[70pt][s]{Candidate}:  & \@authoren \\
+          \makebox[70pt][s]{Candidate: }:  & \@authoren \\
           \vspace{-10pt}\\
-          \makebox[70pt][s]{Supervisor}: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
+          \makebox[70pt][s]{Supervisor: }: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
         }{%
-          \makebox[77pt][s]{Candidate}:  & \@authoren \\
+          \makebox[77pt][s]{Candidate: }:  & \@authoren \\
           \vspace{-10pt}\\
-          \makebox[77pt][s]{Supervisors}: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
-                                          & \TranDegree{\@cotutordegree} \hspace{-8pt} \@cotutoren\\
+          \makebox[77pt][s]{Supervisors: }: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
+          & \TranDegree{\@cotutordegree} \hspace{-8pt} \@cotutoren\\
         }
       \end{tabular}
     }
@@ -781,19 +643,18 @@
   \vspace{150pt}
 
   \begin{spacing}{2.2}
-    {\zihao{-3}
-      \TranDepartment{\@department} \\
-      Beihang University, Beijing, China
+    {\zihao{-2}
+      \textbf{Sino-French Engineer School}\\ 
+      \textbf{Beihang University, Beijing, China}
     }
+  \newpage
   \end{spacing}
-
-  \clearautopage
 }}
 \newcommand{\makecoverinner}{% 封面内页
 {\pdfbookmark[0]{题目页}{makecoverinner}
 
   {\zihao{5} \heiti \noindent
-    \makebox[5\ccwd][s]{中图分类号}：{\bfseries \@clc}
+    \makebox[5\ccwd][s]{中图分类号}：{\bfseries TP242}
     \\
     \makebox[5\ccwd][s]{论文编号}：{\bfseries 10006\@studentid}
   }
@@ -803,15 +664,7 @@
 
   \begin{spacing}{1.2}
     {\zihao{-2} \heiti
-        \ifthenelse{\equal{\@thesis}{master}}{%
-         \makebox[11\ccwd][s]{硕士学位论文}}{
-        \ifthenelse{\equal{\@thesis}{professional}}{%
-         \makebox[11\ccwd][s]{硕士学位论文}}{
-        \ifthenelse{\equal{\@thesis}{doctor}}{%
-          \makebox[11\ccwd][s]{博士学位论文}}{
-        \ifthenelse{\equal{\@thesis}{prodoctor}}{%
-          \makebox[11\ccwd][s]{博士学位论文}}{}
-        }}}
+      工~~程~~师~~毕~~业~~实~~习~~报~~告
     }
 
     \vspace{50pt}
@@ -830,59 +683,50 @@
   \begin{spacing}{2.3}
     \zihao{-4} \songti
     \begin{tabular}{lrrrlrrr}
-      作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{
-        \@branch
-        \ifthenelse{\equal{\@thesis}{master} \OR \equal{\@thesis}{professional}}{硕士}{
-        \ifthenelse{\equal{\@thesis}{doctor} \OR \equal{\@thesis}{prodoctor}}{博士}{}}
-      }       \\
-      指导教师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}称 &                        \multicolumn{3}{l}{\@tutordegree}                      \\
-      学科专业     &          \multicolumn{3}{l}{\@major}                      & 研究方向            &                        \multicolumn{3}{l}{\@feild}                            \\
-      学习时间自   & \@dateenrolly\ 年 & \@dateenrollm\ 月 & \@dateenrolld\ 日 & \hspace{2\ccwd}起至 & \@dategraduatey\ 年 & \@dategraduatem\ 月 & \@dategraduated\ 日止             \\
-      论文提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 论文答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
-      学位授予单位 &          \multicolumn{3}{l}{北京航空航天大学}             & 学位授予日期        &                  年 &                  月 &                  日\hspace{\ccwd} \\
+      作者姓名     &          \multicolumn{3}{l}{\@authorcn}                   & 申请学位级别        &   \multicolumn{3}{l}{工程师}       \\
+      企业导师姓名 &          \multicolumn{3}{l}{\@tutorcn}                    & 职\hspace{2\ccwd}位 &                        \multicolumn{3}{l}{\@tutordegree}                      \\
+      专业方向 & \multicolumn{3}{l}{\@major} & 实习方向 & \multicolumn{3}{l}{\@field}                            \\
+      实习时间自   & \@datebegininterny\ 年 & \@datebegininternm\ 月 & \@datebegininternd\ 日 & \hspace{2\ccwd}起至 & \@dateendinterny\ 年 & \@dateendinternm\ 月 & \@dateendinternd\ 日止             \\
+      报告提交日期 & \@datesubmity\ 年 & \@datesubmitm\ 月 & \@datesubmitd\ 日 & 答辩日期        & \@datedefencey \ 年 & \@datedefencem \ 月 & \@datedefenced \ 日\hspace{\ccwd} \\
     \end{tabular}
   \end{spacing}
-    \clearautopage
+  \newpage
 }}
 \newcommand{\makestatementbuaa}{% 北航声明
 {\pdfbookmark[0]{北航声明}{makestatementbuaa}
 
   \begin{spacing}{1.7}%1.5+0.2
-    {\zihao{3} \heiti \centerline{关于学位论文的独创性声明}}
+    {\zihao{3} \heiti \centerline{关于实习报告的独创性声明}}
     {\zihao{-4} \songti ~\par
-        本人郑重声明：所呈交的论文是本人在指导教师指导下独立进行研究工作所取得的
-    成果，论文中有关资料和数据是实事求是的。尽我所知，除文中已经加以标注和致谢外，
-    本论文不包含其他人已经发表或撰写的研究成果，也不包含本人或他人为获得北京航空
-    航天大学或其它教育机构的学位或学历证书而使用过的材料。与我一同工作的同志对研
-    究所做的任何贡献均已在论文中作出了明确的说明。
+       本人郑重声明：所呈交的报告是本人在指导教师指导下独立进行实习工作所取得的成果，论文中有关资料和数据是实事求是的。尽我所知，除文中已经加以标注和致谢外，本论文不包含其他人已经发表或撰写的研究成果，也不包含本人或他人为获得北京航空航天大学中法工程师学院或其它教育机构的学位或学历证书而使用过的材料。与我一同工作的同志对研究所做的任何贡献均已在论文中作出了明确的说明。
 
-      若有不实之处，本人愿意承担相关法律责任。 \\
 
-      {\zihao{5}\ \ 学位论文作者签名：\underline{\hspace{7\ccwd}} \hspace{4\ccwd}
+        若有不实之处，本人愿意承担相关法律责任。
+     \\
+
+      {\zihao{5}\ \ 实习报告作者签名：\underline{\hspace{7\ccwd}} \hspace{4\ccwd}
       日期：\hspace{3\ccwd}年\hspace{2\ccwd}月\hspace{2\ccwd}日}
     }
 
     \vspace{50pt}
 
-    {\zihao{3} \heiti \centerline{学位论文使用授权}}
+    {\zihao{3} \heiti \centerline{实习报告使用授权书}}
     {\zihao{-4} \songti ~\par
-        本人完全同意北京航空航天大学有权使用本学位论文（包括但不限于其印刷版和电
-    子版），使用方式包括但不限于：保留学位论文，按规定向国家有关部门（机构）送交学
-    位论文，以学术交流为目的赠送和交换学位论文，允许学位论文被查阅、借阅和复印，
-    将学位论文的全部或部分内容编入有关数据库进行检索，采用影印、缩印或其他复制手
-    段保存学位论文。
+        本人完全同意北京航空航天大学中法工程师学院有权使用本实习报告（包括但不限于其印刷版和电子版），使用方式包括但不限于：保留实习报告，按规定向国家有关部门（机构）送交实习报告，以学术交流为目的赠送和交换实习报告，允许实习报告被查阅、借阅和复印，将实习报告的全部或部分内容编入有关数据库进行检索，采用影印、缩印或其他复制手段保存实习报告。
 
-        保密学位论文在解密后的使用授权同上。 \\
 
-        {\zihao{5}\ \ 学位论文作者签名：\underline{\hspace{7\ccwd}} \hspace{4\ccwd}
+      保密实习报告在解密后的使用授权同上。
+     \\
+
+        {\zihao{5}\ \ 实习报告作者签名：\underline{\hspace{7\ccwd}} \hspace{4\ccwd}
         日期：\hspace{3\ccwd}年\hspace{2\ccwd}月\hspace{2\ccwd}日}
 
-        {\zihao{5}\ \ 指导教师签名：\underline{\hspace{9\ccwd}}    \hspace{4\ccwd}
+        {\zihao{5}\ \ 企业导师签名：\underline{\hspace{9\ccwd}}    \hspace{4\ccwd}
         日期：\hspace{3\ccwd}年\hspace{2\ccwd}月\hspace{2\ccwd}日}
     }
 
   \end{spacing}
-  \clearautopage
+  \newpage
 }}
 
 
@@ -891,84 +735,34 @@
 
   \begin{spacing}{1.7}%1.5+0.2
 
-    {\zihao{3} \heiti  \centerline{摘~~~~要}}
+    {\zihao{3} \heiti  \centerline{中文摘要}}
     {\zihao{-4} \songti ~\par
       \@abstrctcn \par ~\par
       {\bfseries \heiti 关键词：} \heiti \@keywordcn
     }
 
-    \clearpage
-    %\ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
+    \newpage
 
-    {\zihao{3} \bfseries  \centerline{Abstract}}
+    {\zihao{3} \bfseries  \centerline{ABSTRACT}}
     {\zihao{-4} ~\par
       \@abstrcten \par ~\par
-      {\bfseries Key words:} \@keyworden
+      {\bfseries \textit{Key words:}} \@keyworden
     }
 
   \end{spacing}
 
-  \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
+  
 }}
 \newcommand{\makecontextlist}{% 目录
-{\pdfbookmark[0]{目录}{makecontextlist}
+  {\pdfbookmark[0]{目录}{makecontextlist}
   \tableofcontents
-  \renewcommand\addvspace[1]{}
-  \ifthenelse{\isundefined{\@listfigtab}}{}{%
-    \ifthenelse{\equal{\@listfigtab}{on}}{%
-      \renewcommand{\addvspace}[1]{}
-      \clearpage
-      \pdfbookmark[0]{图目录}{listoffigures}
-      \listoffigures
-      \clearpage
-      \pdfbookmark[0]{表目录}{listoftables}
-      \listoftables
-    }{}
-    \ifthenelse{\equal{\@listfigtab}{bi}}{%
-      \renewcommand{\addvspace}[1]{}
-      \clearpage
-      \pdfbookmark[0]{图目录}{listoffigures}
-      \listoffigures
-      \clearpage
-      \pdfbookmark[0]{List of Figures}{listoffigureEnges}
-      \listoffigureEnges
-      \clearpage
-      \pdfbookmark[0]{表目录}{listoftables}
-      \listoftables
-      \clearpage
-      \pdfbookmark[0]{List of Tables}{listoftableEnges}
-      \listoftableEnges
-    }{}
   }
-  \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
-}}
-\newcommand{\denotation}{% 缩写定义
-{\ifthenelse{\isundefined{\@abbreviations}}{}{%
-    \pdfbookmark[0]{主要符号表}{denotation}
-    \chapter*{主要符号表}
-    %\centering
-    %\begin{tabular}{cl}
-      \@abbreviations
-    %\end{tabular}%
-    \ifthenelse{\equal{\@beginright}{off}}{\clearpage}{\clearautopage}
   }
-}}
 
 
 \newcommand{\chaptera}[1]{%无章号但编入目录
   \ctexset{chapter/numbering=false}
   \chapter{#1}
-  \setcounter{section}{0}%
-  \setcounter{subsection}{0}%
-  \setcounter{subsubsection}{0}%
-  %
-  \gdef\thesection{\@Alph\c@section}%
-  \gdef\thesubsection{\@Alph\c@section.\@arabic\c@subsection}%
-  %
-}
-\newcommand{\summary}{%结论
-  \ctexset{chapter/numbering=false}
-  \chapter{结~~~~论}
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%
   \setcounter{subsubsection}{0}%
@@ -1010,51 +804,10 @@
     %
 }
 
-\newcommand{\achievement}{%学术成果
-  \ctexset{chapter/numbering=false}
-  \ifthenelse{\equal{\@thesis}{master}}{\chapter{攻读硕士学位期间取得的学术成果}}{
-  \ifthenelse{\equal{\@thesis}{professional}}{\chapter{攻读硕士学位期间取得的学术成果}}{
-  \ifthenelse{\equal{\@thesis}{doctor}}{\chapter{攻读博士学位期间取得的研究成果}}{
-  \ifthenelse{\equal{\@thesis}{prodoctor}}{\chapter{攻读博士学位期间取得的研究成果}}{
-  }}}}
 
-  \setcounter{section}{0}%
-  \setcounter{subsection}{0}%
-  \setcounter{subsubsection}{0}%
-  %
-  \gdef\thesection{\zhnum{section}}%
-  \gdef\thesubsection{\@arabic\c@section.\@arabic\c@subsection}%
-  %
-
-  \renewcommand{\thefigure}{A\arabic{figure}}
-  \setcounter{figure}{0}
-  \renewcommand{\thetable}{A\arabic{table}}
-  \setcounter{table}{0}
-  \renewcommand{\theequation}{A\arabic{equation}}
-  \setcounter{equation}{0}
-}
 \newcommand{\acknowledgments}{%致谢
   \ctexset{chapter/numbering=false}
   \chapter{致~~~~谢}
-
-  \setcounter{section}{0}%
-  \setcounter{subsection}{0}%
-  \setcounter{subsubsection}{0}%
-  %
-  \gdef\thesection{\@Alph\c@section}%
-  \gdef\thesubsection{\@Alph\c@section.\@arabic\c@subsection}%
-  %
-
-  \renewcommand{\thefigure}{A\arabic{figure}}
-  \setcounter{figure}{0}
-  \renewcommand{\thetable}{A\arabic{table}}
-  \setcounter{table}{0}
-  \renewcommand{\theequation}{A\arabic{equation}}
-  \setcounter{equation}{0}
-}
-\newcommand{\biography}{%作者简介
-  \ctexset{chapter/numbering=false}
-  \chapter{作者简介}
 
   \setcounter{section}{0}%
   \setcounter{subsection}{0}%

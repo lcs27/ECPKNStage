@@ -7,9 +7,6 @@
 %% %% bst/GBT7714-2005.bst      : 国标参考文献BibTeX样式文件2005(https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style)
 %% %% bst/GBT7714-2015.bst      : 国标参考文献BibTeX样式文件2015(https://github.com/zepinglee/gbt7714-bibtex-style)
 %% %% pic/logo-buaa.eps         : 论文封皮北航字样
-%% %% pic/head-doctor.eps       : 论文封皮学术博士学位论文标题(华文行楷字体替代解决方案)
-%% %% pic/head-prodoctor.eps    : 论文封皮专业博士学位论文标题(华文行楷字体替代解决方案)
-%% %% pic/head-master.eps       : 论文封皮学术硕士学位论文标题(华文行楷字体替代解决方案)
 %% %% pic/head-professional.eps : 论文封皮专业硕士学位论文标题(华文行楷字体替代解决方案)
 %% %% tex/*.tex                 : 本模板样例中的独立章节
 %% %%-----------
@@ -23,34 +20,6 @@
 % 模板导入:
 % \documentclass[thesis,permission,printtype,ostype,<ctexbookoptions>]{buaa}
 %======================
-% 模板选项:
-%======================
-% I.论文类型(thesis)
-%--------------------
-% a.学术硕士论文（master）[缺省值]
-% b.专业硕士论文（professional）
-% c.学术博士论文（doctor）
-% d.专业博士论文（prodoctor）
-%--------------------
-% II.密级(permission)
-%--------------------
-% a.公开（public）[缺省值]
-% b.内部（privacy）
-% c.秘密（secret=secret3）
-% c.1.秘密3年（secret3）
-% c.2.秘密5年（secret5）
-% c.3.秘密10年（secret10）
-% c.4.秘密永久（secret*）
-% d.机密（classified=classified5）
-% d.1.机密3年（classified3）
-% d.2.机密5年（classified5）
-% d.3.机密10年（classified10）
-% d.4.机密永久（classified*）
-% e.绝密（topsecret=topsecret10）
-% e.1.绝密3年（topsecret3）
-% e.2.绝密5年（topsecret5）
-% e.3.绝密10年（topsecret10）
-% e.4.绝密永久（topsecret*）
 %--------------------
 % III.打印设置(printtype)
 %--------------------
@@ -77,15 +46,13 @@
 
 % !TeX program = xelatex
 
-\documentclass[master,privacy,twoside,win]{buaa}
+\documentclass[oneside,win]{buaa}
 
 %=================================================================
 % 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
 \refcolor{on}   % 开启: on[默认]; 关闭: off;
 % 摘要和正文从右侧页开始
-\beginright{on} % 开启: on[默认]; 关闭: off;
-% 空白页留字
-\emptypagewords{[ -- This page is a preset empty page -- ]}
+\beginright{off} % 开启: on[默认]; 关闭: off;
 
 %=================================================================
 % buaa模板已内嵌以下LaTeX工具包:
@@ -115,19 +82,16 @@
 
 %%=================================================================
 % 论文题目及副标题-{中文}{英文}
-\Title{北航硕博士学位论文~\LaTeX{}模板\BUAAThesis{}}{\LaTeX{} Template of Beihang University Thesis \BUAAThesis{}}
+\Title{中法工程师学院工程师实习~\LaTeX{}模板}{\LaTeX{} Template of Sino-French Engineer School Internship Thesis}
 \Subtitle{版本 \BUAAThesisVer{}}{Version \BUAAThesisVer{}}
 
-% 学科大类,默认工学
-% \Branch{工学}
-
 % 院系,专业及研究方向
-\Department{宇航学院}
-\Major{控制科学与工程}
-\Feild{模式识别与智能系统}
+\Major{系统工程}
+\Field{流体力学}
+\Post{CAE算法工程师}
 
 % 导师信息-{中文名}{英文名}{职称}
-\Tutor{导师姓名}{Tutor}{教授}
+\Tutor{导师姓名}{Tutor}{工程师}
 \Cotutor{副导师姓名}{Cotutor}{高工}
 
 % 学生姓名-{中文名}{英文名}
@@ -135,12 +99,9 @@
 % 学生学号
 \StudentID{ID123456}
 
-% 中图分类号
-\CLC{TP391.4}
-
 % 时间节点-{月}{日}{年}
-\DateEnroll{09}{01}{2015}
-\DateGraduate{03}{31}{2018}
+\DateBeginIntern{09}{01}{2015}
+\DateEndIntern{03}{31}{2018}
 \DateSubmit{01}{10}{2018}
 \DateDefence{03}{01}{2018}
 
@@ -172,21 +133,6 @@
     News, BGR, Shark
 }
 
-% 图标目录
-\Listfigtab{bi} % 启用: on[默认]; 双标题：bi; 关闭: off;
-
-% 缩写定义 按tabular环境或其他列表环境编写
-\Abbreviations{ \centering
-\begin{tabular}{cl}
-  $E$ & 能量 \\
-  $m$ & 质量 \\
-  $c$ & 光速 \\
-  $P$ & 概率 \\
-  $T$ & 时间 \\
-  $v$ & 速度 \\
-\end{tabular}
-}
-
 \begin{document}
 
 %%=================================================================
@@ -201,36 +147,15 @@
 %--------------------
 %%=================================================================
 
-% 绪论
 \input{tex/chap_intro}
-
-% 说明
-\input{tex/chap_instruction}
-
-% 示例
-\input{tex/chap_sample}
-
-% 总结
-\input{tex/chap_summary}
-
-% 参考文献
-% 手册中参考文献标准似乎并没有严格按照国标GBT7714-2015执行
+\input{tex/chap_narrative}
+\input{tex/chap_content}
+\input{tex/chap_evaluation}
+\input{tex/chap_letter_thanks}
 \Bib{bst/GBT7714-BUAA}{ref}
 
-% 附录
 \input{tex/chap_appendix}
 
-% 攻读学位期间成果
-\input{tex/chap_achievement}
-
-% 致谢
 \input{tex/chap_acknowledge}
-
-% 作者简介
-\input{tex/chap_biography}
-
-\vspace{5cm}
-
-This is \BUAAThesis{}, Happy TeXing! --- from WeiQM.
 
 \end{document}

@@ -554,7 +554,7 @@
 
   \renewcommand{\headrulewidth}{0.4pt}
   \fancyfoot[C]{\zihao{5} \thepage}
-  \fancyhead[C]{\zihao{-5} 北京航空航天大学中法工程师学院毕业大实习论文}
+  \fancyhead[C]{\zihao{-5} 北京航空航天大学中法工程师学院工程师毕业大实习论文}
   \setcounter{page}{1}
 }
 
@@ -626,6 +626,7 @@
     \vspace{50pt}
 
     {\zihao{-2}
+    \bfseries
       A Dissertation Submitted for the Degree of Engineer
     }
 
@@ -633,13 +634,13 @@
     {\zihao{-2} \bfseries
       \begin{tabular}{ll}
         \ifthenelse{\isundefined{\@cotutorcn}}{%
-          \makebox[70pt][s]{Candidate: }:  & \@authoren \\
+          \makebox[70pt][s]{Candidate: }  & \@authoren \\
           \vspace{-10pt}\\
-          \makebox[70pt][s]{Supervisor: }: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
+          \makebox[70pt][s]{Supervisor: } & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
         }{%
-          \makebox[77pt][s]{Candidate: }:  & \@authoren \\
+          \makebox[90pt][s]{Candidate: }  & \@authoren \\
           \vspace{-10pt}\\
-          \makebox[77pt][s]{Supervisors: }: & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
+          \makebox[90pt][s]{Supervisors: } & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
           & \TranDegree{\@cotutordegree} \hspace{-8pt} \@cotutoren\\
         }
       \end{tabular}

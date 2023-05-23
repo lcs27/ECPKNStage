@@ -2,13 +2,15 @@
 %% %% <UTF-8>
 %% %% 中法工程师学院毕业实习模板 - LaTeX  2023-5-16
 %% %% 论文样式参考自学院颁发模板
-%% %% 基于北航研究生毕业论文模板
+%% %% 基于北航研究生毕业论文模板进行开发
+%% %%
+%% %% 中法工程师学院毕业实习修改作者：
+%% %%   Luo Chensheng (Github@lcs27)
 %% %%
 %% %% 初始北航研究生毕业论文模板作者:
 %% %%   Wei Quanmao (weiqm@buaa.edu.cn)
 %% %%   Qiao Junfeng (qiaojunfeng@outlook.com)
-%% %% 中法工程师学院毕业实习修改作者：
-%% %%   Luo Chensheng (@lcs27)
+%% %%
 %% %% Versions:
 %% %%   v4.0  LuoCS (16-05-2023)
 %% %%   v3.1  WeiQM (01-24-2022)
@@ -26,8 +28,8 @@
 
 %% 模板标识
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{buaa}[2023/05/26 v3.1 BUAA thesis class]
-\typeout{This is LaTeX template buaa. Version 3.1 (based on CTeX) 01-24-2022}
+\ProvidesClass{EcpknStage}[2023/05/26 v4.0 ECPKN Stage Report class]
+\typeout{This is LaTeX template buaa. Version 4.0 (based on CTeX) 05-16-2023}
 
 %% 选项
 
@@ -65,12 +67,12 @@
 \ProcessOptions\relax
 
 %% 引用ctexbook: 小4,1.5倍行距
-\LoadClass[UTF8,zihao=-4,linespread=1.7]{ctexbook}%1.5+0.2行间距
+\LoadClass[UTF8,zihao=-4,linespread=1.7,openany]{ctexbook}%1.5+0.2行间距
 \setcounter{secnumdepth}{5}
 
 %% BUAAThesis字样及版本信息
 \usepackage{graphicx}
-\def\BUAAThesisVer{v3.1 01-24-2022}
+\def\BUAAThesisVer{v4.0 05-17-2022}
 \def\BUAAThesis{%
  B%
  {\fontsize{0.8em}{\baselineskip}\selectfont
@@ -119,6 +121,8 @@
 \RequirePackage[sort&compress]{natbib}              % BibTex
 \DeclareGraphicsExtensions{.eps,.ps,.png,.jpg,.bmp} % 声明使用图像格式
 \newcommand{\highlight}[1]{\colorbox{yellow}{#1}}   % 高亮注释
+\RequirePackage{inputenc}%For French accents
+\RequirePackage{fontenc}%For French babel
 
 % % 根据不同系统调整
 % \ifthenelse{\equal{\@ostype}{win}}{ % win 配置
@@ -402,8 +406,8 @@
   bookmarksnumbered=true,
   bookmarksopen=true,
   pdffitwindow=true,
-  pdfsubject={BUAA thesis},
-  pdfcreator={LaTeXed~By~WeiQM}
+  pdfsubject={ECPKN Stage},
+  pdfcreator={lcs27}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -490,9 +494,9 @@
     chapter={%章标题 : 三号黑体居中 单倍行距 段前/段后0.5行 另起新页
         format=\zihao{3} \heiti \centering \thispagestyle{fancy},
         fixskip=true,
-        beforeskip=8pt,
+        beforeskip=0pt,
         afterskip=8pt,
-        name = {Chapter,},
+        name = {Chapter\ ,},
         number = \ttfamily\arabic{chapter},
     },
     section={%节标题 : 四号黑体居左 单倍行距 段前/段后0.5行
@@ -598,12 +602,14 @@
       培养学院  & 中法工程师学院
     \end{tabular}
   \end{spacing}
+  \newpage
 }}
 \newcommand{\makecoveren}{% 英文封面
 {\pdfbookmark[0]{英文封面}{makecoveren}
   \centering
 
-  \ \vspace{100pt}
+  \ 
+  \vspace{100pt}
 
   \begin{spacing}{1.2}
 
@@ -773,7 +779,6 @@
 }
 \newcommand{\Bib}[2]{%参考文献
   \bibliographystyle{#1}
-  \clearpage
   \phantomsection
   \addcontentsline{toc}{chapter}{参考文献}
   \bibliography{#2}

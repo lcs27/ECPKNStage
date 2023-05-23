@@ -41,7 +41,7 @@ BUAAThesis
 + CTeX 2.5.10
 
 ## Copyright
-本模板为[Wei Quanmao](https://weiquanmao.github.io/)开发的北京航空航天大学学位论文模板BUAAThesis的二次开发，遵循CC4.0协议
+本模板为[Wei Quanmao](https://weiquanmao.github.io/)开发的北京航空航天大学学位论文模板BUAAThesis的二次开发，遵循CC1.0协议
 
 ## 致谢
 

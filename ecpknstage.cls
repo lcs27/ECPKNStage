@@ -496,7 +496,7 @@
         fixskip=true,
         beforeskip=0pt,
         afterskip=8pt,
-        name = {Chapter\ ,},
+        name = {Chapter\ ,.},
         number = \ttfamily\arabic{chapter},
     },
     section={%节标题 : 四号黑体居左 单倍行距 段前/段后0.5行

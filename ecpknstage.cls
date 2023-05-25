@@ -634,9 +634,9 @@
     {\zihao{-2} \bfseries
       \begin{tabular}{ll}
         \ifthenelse{\isundefined{\@cotutorcn}}{%
-          \makebox[70pt][s]{Candidate: }  & \@authoren \\
+          \makebox[80pt][s]{Candidate: }  & \@authoren \\
           \vspace{-10pt}\\
-          \makebox[70pt][s]{Supervisor: } & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
+          \makebox[80pt][s]{Supervisor: } & \TranDegree{\@tutordegree} \hspace{-8pt} \@tutoren \\
         }{%
           \makebox[90pt][s]{Candidate: }  & \@authoren \\
           \vspace{-10pt}\\

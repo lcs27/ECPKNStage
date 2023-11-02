@@ -105,7 +105,7 @@
 \RequirePackage{booktabs}     % 表格上下粗线
 \RequirePackage{longtable}    % 长表格
 \RequirePackage{multirow}     % 多行表格
-\RequirePackage{caption}      % 标题设置
+\RequirePackage[figurename=Fig.,tablename=Tab.]{caption}      % 标题设置
 \RequirePackage[lang=english,listtype+=Eng]{bicaption} % 双标题
 \RequirePackage{listings}     % 代码环境
 \RequirePackage{algorithm2e}  % 算法环境
@@ -507,14 +507,14 @@
         number = \ttfamily\arabic{section},
     },
     subsection={%条标题 : 小四号黑体居左 单倍行距 段前/段后0.5行
-        format=\zihao{-4} \heiti \raggedright,
+        format=\zihao{-4} \heiti \raggedright \bfseries,
         beforeskip=3.61pt,
         afterskip=3.61pt,
         name = {,.},
         number = \ttfamily\arabic{subsection},
     },
     subsubsection={% 附加4级标题 : 小四号宋体加粗居左
-        format=\zihao{-4} \songti \raggedright \bfseries,
+        format=\zihao{-4} \songti \raggedright ,
         nameformat=\mdseries,
         beforeskip = 0bp, afterskip = 0bp,
         name = {,.},

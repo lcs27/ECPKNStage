@@ -147,17 +147,22 @@
 
 % 统一不同系统的字体设置
 \RequirePackage{times}        % Times New Roman字体
+\setCJKmainfont[Path=fonts/, AutoFakeBold]{SimSun}
 % 修复宋体加粗问题
-\setCJKfamilyfont{zhsong}[AutoFakeBold = {2.17}]{SimSun}
+\setCJKfamilyfont{zhsong}[Path=fonts/, AutoFakeBold]{SimSun}
 \renewcommand*{\songti}{\CJKfamily{zhsong}}
-\setCJKfamilyfont{zhhei}[AutoFakeBold = {3.17}]{SimHei}
+\setCJKfamilyfont{zhhei}[Path=fonts/, AutoFakeBold]{SimHei}
 \renewcommand*{\heiti}{\CJKfamily{zhhei}}
 
 % 根据不同编译系统选择正确的 Times New Roman字体
 \usepackage{iftex}
 \ifPDFTeX
 \else
-\setmainfont{Times New Roman}
+	\setmainfont[Path=fonts/,
+		BoldFont={* Bold},
+		ItalicFont={* Italic},
+		BoldItalicFont={* Bold Italic}
+	]{Times New Roman}
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
